@@ -14,18 +14,21 @@ public class BasePage {
         driver = wd;
     }
 
-    public void pause(int time){
+    public void pause(int time) {
         try {
-            Thread.sleep(time*1000L);
+            Thread.sleep(time * 1000L);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void clickWait(WebElement element){
+    public void clickWait(WebElement element) {
         new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
-
+    public boolean validateTextInElement(WebElement element, String text) {
+        return new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.textToBePresentInElement(element, text));
+    }
 }
