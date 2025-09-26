@@ -3,6 +3,7 @@ package tests;
 import dto.Board;
 import dto.User;
 import manager.AppManager;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BoardsPage;
@@ -31,5 +32,6 @@ public class DeleteBoardTests extends AppManager {
     @Test
     public void deleteBoardPositiveTest(){
         new MyBoardPage(getDriver()).deleteBoard();
+        Assert.assertTrue(boardsPage.validatePopUpMessage("Board deleted."));
     }
 }

@@ -24,6 +24,12 @@ public class BoardsPage extends BasePage {
     WebElement inputBoardTitle;
     @FindBy(xpath = "//button[@data-testid='create-board-submit-button']")
     WebElement btnCreateBoardSubmit;
+    @FindBy(xpath = "//span[@class='VmbXKMJLSqfD0U']")
+    WebElement popUpMessageBoardDelete;
+
+    public boolean validatePopUpMessage(String text){
+        return validateTextInElement(popUpMessageBoardDelete, text);
+    }
 
     public void createNewBoard(Board board) {
         btnCreateNewBoard.click();
