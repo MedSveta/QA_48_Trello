@@ -18,7 +18,7 @@ public class BoardsPage extends BasePage {
                 10), this);
     }
 
-    @FindBy(xpath = "//button[@data-testid='create-board-tile']")
+    @FindBy(xpath = "//button[@class='uNYBvavDBWmsZA FdcUZ8Pg9B6NNQ ybVBgfOiuWZJtD mUpWqmjL4CZBvn _St8_YSRMkLv07']")
     WebElement btnCreateNewBoard;
     @FindBy(xpath = "//input[@data-testid='create-board-title-input']")
     WebElement inputBoardTitle;
@@ -26,6 +26,15 @@ public class BoardsPage extends BasePage {
     WebElement btnCreateBoardSubmit;
     @FindBy(xpath = "//span[@class='VmbXKMJLSqfD0U']")
     WebElement popUpMessageBoardDelete;
+    @FindBy(xpath = "//button[@class='kKCUvBL0NSbkMZ js-open-header-member-menu ZLTJF_ysLPgs1N PhzBALMp63PY_y ybVBgfOiuWZJtD _St8_YSRMkLv07']")
+    WebElement btnAccount;
+    @FindBy(xpath = "//span[text()='Manage account']")
+    WebElement btnManageAccount;
+
+    public void openMyAccount(){
+        clickWait(btnAccount);
+        clickWait(btnManageAccount);
+    }
 
     public boolean validatePopUpMessage(String text){
         return validateTextInElement(popUpMessageBoardDelete, text);
