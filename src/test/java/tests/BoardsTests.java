@@ -12,12 +12,14 @@ import pages.BoardsPage;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.MyBoardPage;
+import utils.RandomUtils;
 import utils.TestNgListener;
+import static utils.RandomUtils.*;
 
 @Listeners(TestNgListener.class)
 
 public class BoardsTests extends AppManager {
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void login(){
         User user = User.builder()
                 .email("sveta1978medved@gmail.com")
@@ -27,10 +29,10 @@ public class BoardsTests extends AppManager {
         new LoginPage(getDriver()).login(user);
     }
 
-    @Test
+    @Test(groups = {"smoke", "regress"})
     public void createNewBoardPositiveTest(){
         Board board = Board.builder()
-                .boardTitle("123Qwerty")
+                .boardTitle(generateString(5))
                 .build();
         BoardsPage boardsPage = new BoardsPage(getDriver());
         boardsPage.createNewBoard(board);

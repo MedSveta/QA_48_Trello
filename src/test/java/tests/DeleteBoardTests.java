@@ -13,7 +13,7 @@ import pages.MyBoardPage;
 
 public class DeleteBoardTests extends AppManager {
    BoardsPage boardsPage;
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void login(){
         User user = User.builder()
                 .email("sveta1978medved@gmail.com")
@@ -29,7 +29,7 @@ public class DeleteBoardTests extends AppManager {
         boardsPage.clickBtnSubmit();
     }
 
-    @Test
+    @Test(groups = "smoke")
     public void deleteBoardPositiveTest(){
         new MyBoardPage(getDriver()).deleteBoard();
         Assert.assertTrue(boardsPage.validatePopUpMessage("Board deleted."));
